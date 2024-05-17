@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db/conectdb.js");
+const { INTEGER } = require("sequelize");
 
 //rota principal
 router.get("/", (req, res) => {
@@ -8,7 +9,7 @@ router.get("/", (req, res) => {
 });
 //rota cadastro
 router.post("/createUser", async (req, res) => {
-  const { nome, Email, CPF, Senha, CEP, Endereco } = req.body;
+  const { nome, Email, CPF, Senha, CEP, Endereco } = req.body; 
   if (
     (nome == "" || Senha == "" || CPF == "",
     CEP == "" || Endereco == "" || Email == "")
@@ -53,7 +54,7 @@ router.post("/login", async (req, res) => {
         "'"
     );
     if (result[0].length == 0) {
-      res.status(422).json({
+      res.status(200).json({
         message: "Usuário  não encontrado!",
         data: 0,
       });
@@ -65,5 +66,25 @@ router.post("/login", async (req, res) => {
     }
   }
 });
+//search data by cpf
+router.post("/getData",async (req,res)=>{
+  const {cpf} = req.body
+  if(!cpf || cpf == ""){
+    res.status(422).json({message:"digite o cpf"})
+  }else{
+    const response = await db.query("select * from usuario where usuario.cpf = " + parseInt(cpf))
+    if (response[0].length == 0) {
+      res.status(200).json({
+        message: "Usuário  não encontrado!",
+        data: 0,
+      });
+    } else {
+      res.status(200).json({
+        message: "ok!",
+        data: response[0][0],
+      });
+  }
+}
+})
 
 module.exports = router;
