@@ -6,7 +6,7 @@ const bodyparser = require("body-parser");
 
 //define o formato de resposta e requisição de dados
 app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
+app.use(bodyparser.json()); 
 //usa o arquivos das rotas
 app.use(routers);
 //inicia o server na porta 5000
