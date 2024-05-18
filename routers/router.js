@@ -37,8 +37,8 @@ router.post("/createUser", async (req, res) => {
         Email +
         "');"
     );
-    res.status(200).json({ message: "Usuário cadastrado com sucesso!" });
-  }
+    res.status(200).json({ created:true, message: "Usuário cadastrado com sucesso!" });
+  } 
 });
 //login
 router.post("/login", async (req, res) => {
