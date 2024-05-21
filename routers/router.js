@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db/conectdb.js");
-const { INTEGER } = require("sequelize");
 
 //rota principal
 router.get("/", (req, res) => {
@@ -29,9 +28,9 @@ router.post("/createUser", async (req, res) => {
         Senha +
         "'," +
         CPF +
-        "," +
-        CEP +
-        ",'" +
+        "," + 
+        CEP + 
+        ",'" + 
         Endereco +
         "','" +
         Email +
