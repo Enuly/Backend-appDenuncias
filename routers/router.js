@@ -18,29 +18,40 @@ router.post("/createUser", async (req, res) => {
       .json({ message: "preencha todos os seus dados! fi de corno" });
   } else if (!nome || !CPF || !Senha || !Endereco || !CEP || !Email) {
     res
-      .status(422)
+      .status(422) 
       .json({ message: "preencha todos os seus dados! fi de corno" });
   } else {
-    await db.query(
-      "insert into usuario(nome, senha, cpf, cep, endereco, email) values('" +
-        nome +
-        "','" +
-        Senha +
-        "'," +
-        CPF +
-        "," + 
-        CEP + 
-        ",'" + 
-        Endereco +
-        "','" +
-        Email +
-        "');"
-    );
-    res.status(200).json({ created:true, message: "Usuário cadastrado com sucesso!" });
+    const responseCpf = await db.query("select cpf from usuario where usuario.cpf = " + CPF)
+    const responseEmail = await db.query("select email from usuario where usuario.email = '" + Email + "'")
+   console.log(responseEmail[0].length != 0 )
+    if(responseCpf[0].length == [] && responseEmail[0].length == 0 ){
+      await db.query(
+        "insert into usuario(nome, senha, cpf, cep, endereco, email) values('" +
+          nome +
+          "','" +
+          Senha +
+          "'," +
+          CPF +
+          "," + 
+          CEP + 
+          ",'" + 
+          Endereco +
+          "','" +
+          Email +
+          "');"
+      );
+      res.status(200).json({cpfIsLogged: false, emailIsLogged: false, created:true, message: "Usuário cadastrado com sucesso!" });
+    }else{
+      const cpfIsLogged = responseCpf[0][0] != undefined
+      const emailIsLogged = responseEmail[0][0] != undefined
+      res.status(200).json({ cpfIsLogged: cpfIsLogged, emailIsLogged: emailIsLogged, message: "Cpf cadastrado" });
+    }
+    
+    
   } 
 });
 //login
-router.post("/login", async (req, res) => {
+router.post("/login", async (req, res) => { 
   const { email, senha } = req.body;
   if (!email || !senha || email == "" || senha == "") {
     res.status(422).json({ message: "Digite todas as credênciais!" });
