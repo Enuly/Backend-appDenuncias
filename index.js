@@ -10,7 +10,7 @@ const cors = require("cors")
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
-const env = process.env.NODE_ENV || "dev";
+const env = process.env.NODE_ENV || "start";
 dotenv.config({ path: ".env." + env });
 const port = process.env.port
 //usa o arquivos das rotas
