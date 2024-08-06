@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose --max-old-space-size=256 --detectOpenHandles  --coverage",
     "start": "cross-env NODE_ENV=start nodemon index.js"
   },
   "author": "Emanuelle",
   "license": "ISC",
   "dependencies": {
+    "@jest/types": "^29.6.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
@@ -18,6 +19,14 @@
     "mysql2": "^3.9.7",
     "nodemon": "^3.1.0",
     "sequelize": "^6.37.3",
-    "sequelizer": "^1.1.4"
+    "sequelizer": "^1.1.4",
+    "ts-jest": "^29.2.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
