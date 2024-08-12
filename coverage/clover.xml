@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1722906743140" clover="3.2.0">
-  <project timestamp="1722906743140" name="All files">
-    <metrics statements="68" coveredstatements="28" conditionals="48" coveredconditionals="19" methods="7" coveredmethods="1" elements="123" coveredelements="48" complexity="0" loc="68" ncloc="68" packages="2" files="2" classes="2"/>
+<coverage generated="1723504340957" clover="3.2.0">
+  <project timestamp="1723504340957" name="All files">
+    <metrics statements="71" coveredstatements="31" conditionals="48" coveredconditionals="19" methods="8" coveredmethods="2" elements="127" coveredelements="52" complexity="0" loc="71" ncloc="71" packages="3" files="3" classes="3"/>
     <package name="db">
       <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="conectdb.js" path="C:\Users\antfc\Documents\projects\Backend-appDenuncias\db\conectdb.js">
@@ -13,6 +13,15 @@
         <line num="8" count="1" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="lambda">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.ts" path="C:\Users\antfc\Documents\projects\Backend-appDenuncias\lambda\index.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
       </file>
     </package>
     <package name="routers">
